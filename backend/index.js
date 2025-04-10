@@ -1,7 +1,12 @@
 const express = require('express');
+const connectDB = require('./config/mongo');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
+
+connectDB();
+app.use(express.json());
+
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
